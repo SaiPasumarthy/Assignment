@@ -25,6 +25,7 @@ class ListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         listTableView.tableFooterView = UIView()
+        self.title = "Documents"
         loadResourceArrar()
         downloadService.downloadsSession = self.downloadsSession
     }
@@ -44,6 +45,18 @@ class ListViewController: UIViewController {
         }
     }
     
+    func navigateToNextScreen(resource: Resource) {
+        if resource.downloaded {
+            switch resource.resourceType {
+            case .image:
+                self.performSegue(withIdentifier: "ImageViewController", sender: resource)
+            case .pdf:
+                self.performSegue(withIdentifier: "PDFViewController", sender: resource)
+            case .video:
+                playDownload(resource)
+            }
+        }
+    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -101,16 +114,7 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     // When user taps cell, play the local file, if it's downloaded
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let resource = resourceArray[indexPath.row]
-        if resource.downloaded {
-            switch resource.resourceType {
-            case .image:
-                self.performSegue(withIdentifier: "ImageViewController", sender: resource)
-            case .pdf:
-                self.performSegue(withIdentifier: "PDFViewController", sender: resource)
-            case .video:
-                playDownload(resource)
-            }
-        }
+        navigateToNextScreen(resource: resource)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
@@ -123,7 +127,11 @@ extension ListViewController: ResourceCellDelegate {
     func downloadTapped(_ cell: ResourceCell) {
         if let indexPath = listTableView.indexPath(for: cell) {
             let resource = resourceArray[indexPath.row]
-            downloadService.startDownload(resource)
+            if resource.downloaded {
+                navigateToNextScreen(resource: resource)
+            } else {
+                downloadService.startDownload(resource)
+            }
             reload(indexPath.row)
         }
     }

@@ -38,16 +38,20 @@ class ResourceCell: UITableViewCell {
         }
         var showDownloadControls = false
         // Non-nil Download object means a download is in progress
-        if let download = download {
-            showDownloadControls = true
-            let title = download.isDownloading ? "Downloading..." : "Download"
-            resourceDownloadButton.setTitle(title, for: .normal)
+        var title = "Download"
+        if downloaded {
+            title = resource.resourceType == .video ? "Play" : "View"
+        } else {
+            if let download = download {
+                showDownloadControls = true
+                title = download.isDownloading ? "Downloading..." : "Download"
+            }
         }
+        resourceDownloadButton.setTitle(title, for: .normal)
         progressBar.isHidden = !showDownloadControls
         progressLabel.isHidden = !showDownloadControls
         // If the resource is already downloaded, enable cell selection and hide the Download button
         selectionStyle = downloaded ? UITableViewCellSelectionStyle.gray : UITableViewCellSelectionStyle.none
-        resourceDownloadButton.isHidden = downloaded
     }
     
     func updateDisplay(progress: Float, totalSize : String) {
