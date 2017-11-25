@@ -21,9 +21,11 @@ class AssignmentTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func testUtilityQueryParams() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let queryParam = Utility.getQueryStringParameter(url: URL(string: "https://clientarea.indegene.com/sharemax/retrieve.jsp?id=fd7b185a-58e7-4e1f-9870-654736d9fa2d")!, param: "id")
+        XCTAssertEqual(queryParam, "fd7b185a-58e7-4e1f-9870-654736d9fa2d")
     }
     
     func testPerformanceExample() {
