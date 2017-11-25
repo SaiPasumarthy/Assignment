@@ -1,0 +1,59 @@
+//
+//  StoryboardSupport.swift
+//  Assignment
+//
+//  Created by Sai Pasumarthy on 23/11/17.
+//  Copyright © 2017 SparklerTechies. All rights reserved.
+//
+
+import UIKit
+
+protocol StoryboardIdentifiable {
+    static var storyboardIdentifier: String { get }
+}
+
+extension StoryboardIdentifiable where Self: UITableViewCell {
+    static var storyboardIdentifier: String {
+        return String(describing: self)
+    }
+}
+
+extension UITableViewCell: StoryboardIdentifiable { }
+
+extension UITableView {
+    func dequeueReusableCell<T: UITableViewCell>(for indexPath: IndexPath) -> T {
+        guard let cell = dequeueReusableCell(withIdentifier: T.storyboardIdentifier, for: indexPath) as? T else {
+            fatalError("Could not find table view cell with identifier \(T.storyboardIdentifier)")
+        }
+        return cell
+    }
+    
+    func cellForRow<T: UITableViewCell>(at indexPath: IndexPath) -> T {
+        guard let cell = cellForRow(at: indexPath) as? T else {
+            fatalError("Could not get cell as type \(T.self)")
+        }
+        return cell
+    }
+}
+
+protocol SegueHandlerType {
+    associatedtype SegueIdentifier: RawRepresentable
+}
+
+extension SegueHandlerType where Self: UIViewController, SegueIdentifier.RawValue == String {
+    
+    func performSegue(with identifier: SegueIdentifier, sender: Any?) {
+        performSegue(withIdentifier: identifier.rawValue, sender: sender)
+    }
+    
+    func segueIdentifier(for segue: UIStoryboardSegue) -> SegueIdentifier {
+        guard   let identifier = segue.identifier,
+            let segueIdentifier = SegueIdentifier(rawValue: identifier)
+            else {
+                fatalError("Invalid segue identifier: \(String(describing: segue.identifier))")
+        }
+        
+        return segueIdentifier
+    }
+    
+}
