@@ -16,7 +16,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Item 2-->
+        <!--Configure-->
         <scene sceneID="46M-eS-6cR">
             <objects>
                 <viewController id="A0y-h2-CVJ" sceneMemberID="viewController">
@@ -26,11 +26,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="I5w-0e-AKG"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="6i1-OP-rUy"/>
+                    <tabBarItem key="tabBarItem" title="Configure" id="6i1-OP-rUy"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zwz-Xn-As6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1390" y="386"/>
+            <point key="canvasLocation" x="988" y="397"/>
         </scene>
         <!--List View Controller-->
         <scene sceneID="TW4-vL-lde">
@@ -119,11 +119,12 @@
                     <connections>
                         <outlet property="listTableView" destination="kPm-KG-cKN" id="uDE-GF-QYm"/>
                         <segue destination="pIy-1X-DTP" kind="show" identifier="ImageViewController" id="Tup-iA-VtV"/>
+                        <segue destination="VPO-I3-SsG" kind="show" identifier="PDFViewController" id="zz4-tJ-FJL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9tK-hw-kw2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1728.8" y="-279.31034482758622"/>
+            <point key="canvasLocation" x="1729" y="-296"/>
         </scene>
         <!--Image View Controller-->
         <scene sceneID="wC7-lu-6jQ">
@@ -154,7 +155,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hCW-Vh-Z1b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2440.8000000000002" y="-283.80809595202402"/>
+            <point key="canvasLocation" x="1729" y="411"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="52G-rb-esy">
+            <objects>
+                <viewController storyboardIdentifier="PDFViewController" id="VPO-I3-SsG" customClass="PDFViewController" customModule="Assignment" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GsD-2b-CNF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="GQm-WF-zWa"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SJQ-kI-056" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2502" y="411"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="8px-zK-hll">

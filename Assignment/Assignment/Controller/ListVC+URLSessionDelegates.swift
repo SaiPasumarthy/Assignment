@@ -12,14 +12,11 @@ import Foundation
 extension ListViewController: URLSessionDownloadDelegate {
 
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-        // 1
         guard let sourceURL = downloadTask.originalRequest?.url else { return }
         let download = downloadService.activeDownloads[sourceURL]
         downloadService.activeDownloads[sourceURL] = nil
-        // 2
         let destinationURL = Utility.localFilePath(for: sourceURL)
         print(destinationURL)
-        // 3
         let fileManager = FileManager.default
         try? fileManager.removeItem(at: destinationURL)
         do {
@@ -42,15 +39,11 @@ extension ListViewController: URLSessionDownloadDelegate {
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask,
                     didWriteData bytesWritten: Int64, totalBytesWritten: Int64,
                     totalBytesExpectedToWrite: Int64) {
-        // 1
         guard let url = downloadTask.originalRequest?.url,
             let download = downloadService.activeDownloads[url]  else { return }
-        // 2
         download.progress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
-        // 3
         let totalSize = ByteCountFormatter.string(fromByteCount: totalBytesExpectedToWrite,
                                                   countStyle: .file)
-        // 4
         DispatchQueue.main.async {
             if let resourceCell = self.listTableView.cellForRow(at: IndexPath(row: download.resource.resourceIndex,
                                                                        section: 0)) as? ResourceCell {
@@ -62,7 +55,6 @@ extension ListViewController: URLSessionDownloadDelegate {
 
 
 extension ListViewController: URLSessionDelegate {
-    
     // Standard background session handler
     func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
         DispatchQueue.main.async {

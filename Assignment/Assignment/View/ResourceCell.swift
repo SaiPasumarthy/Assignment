@@ -28,13 +28,13 @@ class ResourceCell: UITableViewCell {
     }
     
     func configure(resource: Resource, downloaded: Bool, download: Download?) {
-        switch resource.resourceIndex {
-        case 4:
-            resourceTitleLabel.text = "PDF"
-        case 5:
-            resourceTitleLabel.text = "Video"
-        default:
+        switch resource.resourceType {
+        case .image:
             resourceTitleLabel.text = "Image"
+        case .pdf:
+            resourceTitleLabel.text = "PDF"
+        case .video:
+            resourceTitleLabel.text = "Video"
         }
         var showDownloadControls = false
         // Non-nil Download object means a download is in progress
@@ -52,6 +52,7 @@ class ResourceCell: UITableViewCell {
     
     func updateDisplay(progress: Float, totalSize : String) {
         progressBar.progress = progress
-        progressLabel.text = String(format: "%.1f%% of %@", progress * 100, totalSize)
+        let textStr = String(format: "%.1f%% of %@", progress * 100, totalSize)
+        progressLabel.text = textStr
     }
 }

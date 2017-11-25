@@ -21,6 +21,7 @@
 		98F823CD1FC71DD0002C5344 /* StoryboardSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F823CC1FC71DD0002C5344 /* StoryboardSupport.swift */; };
 		98F823CF1FC73789002C5344 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F823CE1FC73789002C5344 /* ImageViewController.swift */; };
 		98F823D11FC7E247002C5344 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F823D01FC7E247002C5344 /* Utility.swift */; };
+		98F823DB1FC90DDE002C5344 /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F823DA1FC90DDE002C5344 /* PDFViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		98F823CE1FC73789002C5344 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		98F823D01FC7E247002C5344 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		98F823D31FC81581002C5344 /* Assignment.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Assignment.entitlements; sourceTree = "<group>"; };
+		98F823DA1FC90DDE002C5344 /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 			children = (
 				98F823C01FC713C9002C5344 /* ListViewController.swift */,
 				98F823CE1FC73789002C5344 /* ImageViewController.swift */,
+				98F823DA1FC90DDE002C5344 /* PDFViewController.swift */,
 				98F823CA1FC7197C002C5344 /* ListVC+URLSessionDelegates.swift */,
 			);
 			path = Controller;
@@ -279,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				98F823CB1FC7197C002C5344 /* ListVC+URLSessionDelegates.swift in Sources */,
+				98F823DB1FC90DDE002C5344 /* PDFViewController.swift in Sources */,
 				98F823CF1FC73789002C5344 /* ImageViewController.swift in Sources */,
 				98F823D11FC7E247002C5344 /* Utility.swift in Sources */,
 				98F823C91FC7189B002C5344 /* DownloadService.swift in Sources */,
@@ -444,7 +448,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PS87393A3H;
 				INFOPLIST_FILE = Assignment/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sparklertechies.assignment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -461,7 +465,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PS87393A3H;
 				INFOPLIST_FILE = Assignment/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sparklertechies.assignment;
 				PRODUCT_NAME = "$(TARGET_NAME)";

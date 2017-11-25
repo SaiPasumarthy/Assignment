@@ -21,3 +21,7 @@ class Utility {
         return url.queryItems?.first(where: { $0.name == param })?.value
     }
 }
+
+enum ResourceType: String {
+    case image, pdf, video
+}
